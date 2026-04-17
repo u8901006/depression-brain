@@ -45,6 +45,7 @@ jobs:
           node scripts/fetch_papers.mjs \
             --days 7 \
             --max-papers 50 \
+            --lookback-dedup 7 \
             --output papers.json
         continue-on-error: true
 

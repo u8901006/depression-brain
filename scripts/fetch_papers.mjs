@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { writeFileSync, readdirSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 
 const PUBMED_SEARCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi";
@@ -111,6 +111,30 @@ const TOPICS = [
 ];
 
 const HEADERS = { "User-Agent": "FitnessBrainBot/1.0 (research aggregator)" };
+
+function collectSeenPmids(docsDir = "docs", lookbackDays = 7) {
+  const seen = new Set();
+  try {
+    const files = readdirSync(docsDir).filter((f) => f.startsWith("fitness-") && f.endsWith(".html"));
+    const cutoff = new Date(Date.now() - lookbackDays * 86400000);
+    for (const f of files) {
+      const dateMatch = f.match(/fitness-(\d{4}-\d{2}-\d{2})\.html/);
+      if (!dateMatch) continue;
+      const fileDate = new Date(dateMatch[1]);
+      if (fileDate < cutoff) continue;
+      try {
+        const html = readFileSync(`${docsDir}/${f}`, "utf-8");
+        const pmidRegex = /pubmed\.ncbi\.nlm\.nih\.gov\/(\d+)/g;
+        let m;
+        while ((m = pmidRegex.exec(html)) !== null) {
+          seen.add(m[1]);
+        }
+      } catch {}
+    }
+  } catch {}
+  console.error(`[INFO] Collected ${seen.size} previously seen PMIDs from last ${lookbackDays} days`);
+  return seen;
+}
 
 function buildQuery(days = 7, maxJournals = 15) {
   const journalPart = JOURNALS.slice(0, maxJournals)
@@ -225,16 +249,30 @@ async function main() {
       days: { type: "string", default: "7" },
       "max-papers": { type: "string", default: "50" },
       output: { type: "string", default: "papers.json" },
+      "lookback-dedup": { type: "string", default: "0" },
     },
   });
 
   const days = parseInt(values.days, 10);
   const maxPapers = parseInt(values["max-papers"], 10);
+  const lookbackDedup = parseInt(values["lookback-dedup"], 10);
+
+  let seenPmids = new Set();
+  if (lookbackDedup > 0) {
+    seenPmids = collectSeenPmids("docs", lookbackDedup);
+  }
+
   const query = buildQuery(days);
   console.error(`[INFO] Searching PubMed for papers from last ${days} days...`);
 
-  const pmids = await searchPapers(query, maxPapers);
+  let pmids = await searchPapers(query, maxPapers);
   console.error(`[INFO] Found ${pmids.length} papers`);
+
+  if (seenPmids.size > 0) {
+    const before = pmids.length;
+    pmids = pmids.filter((id) => !seenPmids.has(id));
+    console.error(`[INFO] Dedup: ${before} -> ${pmids.length} (removed ${before - pmids.length} already seen)`);
+  }
 
   if (!pmids.length) {
     const output = {
