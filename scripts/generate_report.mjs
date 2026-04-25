@@ -99,8 +99,8 @@ ${papersText}
         const text = data.choices?.[0]?.message?.content || "";
         const result = safeJsonParse(text);
         if (!result) { console.error(`[WARN] JSON parse failed on attempt ${attempt + 1}`); if (attempt < 2) await new Promise(r => setTimeout(r, 5000)); continue; }
-        console.error(`[INFO] Analysis complete: ${(result.top_picks||[]).length} top picks, ${(result.all_papers||[]).length} total`);
-        return result;
+        console.error(`[INFO] Analysis complete via ${model}: ${(result.top_picks||[]).length} top picks, ${(result.all_papers||[]).length} total`);
+        return { result, model };
       } catch (e) { if (e.name === "TimeoutError") { console.error(`[WARN] ${model} timeout on attempt ${attempt + 1}`); } else { console.error(`[ERROR] ${model} failed: ${e.message}`); } if (attempt < 2) await new Promise(r => setTimeout(r, 5000)); }
     }
   }
@@ -219,14 +219,38 @@ async function main() {
   if (!apiKey) { console.error("[ERROR] No API key. Set ZHIPU_API_KEY env var or use --api-key"); process.exit(1); }
   const papersData = loadPapers(values.input);
   let analysis;
-  let usedModel = MODELS[0];
+  let usedModel = "N/A";
   if (!papersData || !papersData.papers?.length) {
     console.error("[WARN] No papers found, generating empty report");
     const dateStr = values.date || new Date().toISOString().slice(0, 10);
     analysis = { date: dateStr, market_summary: "今日 PubMed 暫無新的健身醫學/物理治療/神經科學/心理學文獻更新。請明天再查看。", top_picks: [], all_papers: [], keywords: [], topic_distribution: {} };
   } else {
-    analysis = await analyzePapers(apiKey, papersData);
-    if (!analysis) { console.error("[ERROR] Analysis failed, cannot generate report"); process.exit(1); }
+    const aiResult = await analyzePapers(apiKey, papersData);
+    if (aiResult) {
+      analysis = aiResult.result;
+      usedModel = aiResult.model;
+    } else {
+      console.error("[WARN] AI analysis failed, generating fallback report from raw paper data");
+      const dateStr = values.date || papersData.date || new Date().toISOString().slice(0, 10);
+      analysis = {
+        date: dateStr,
+        market_summary: `今日共擷取 ${papersData.count} 篇文獻，AI 分析暫時無法使用，以下顯示原始文獻列表。`,
+        top_picks: [],
+        all_papers: (papersData.papers || []).map(p => ({
+          title_zh: p.title,
+          title_en: p.title,
+          journal: p.journal || "",
+          summary: p.abstract ? p.abstract.slice(0, 200) + "…" : "（無摘要）",
+          clinical_utility: "中",
+          tags: (p.keywords || []).slice(0, 3),
+          url: p.url || "#",
+          emoji: "📄",
+        })),
+        keywords: [],
+        topic_distribution: {},
+      };
+      usedModel = "fallback (AI unavailable)";
+    }
   }
   const targetDate = values.date || analysis.date || new Date().toISOString().slice(0, 10);
   const outputFile = values.output === "docs/fitness-today.html" ? `docs/fitness-${targetDate}.html` : values.output;
