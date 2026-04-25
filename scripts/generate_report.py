@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate TRD daily report HTML using Zhipu AI.
+Generate depression treatment daily report HTML using Zhipu AI.
 Model fallback: GLM-5-Turbo -> GLM-4.7 -> GLM-4.7-Flash
 100000 max_tokens, 660s timeout, enhanced JSON fault tolerance.
 """
@@ -21,11 +21,11 @@ API_BASE = os.environ.get(
 MODEL_CHAIN = ["glm-5-turbo", "glm-4.7", "glm-4.7-flash"]
 
 SYSTEM_PROMPT = (
-    "你是難治型憂鬱症（Treatment-Resistant Depression, TRD）領域的資深研究員與科學傳播者。你的任務是：\n"
-    "1. 從提供的醫學文獻中，篩選出最具臨床意義與研究價值的 TRD 論文\n"
+    "你是憂鬱症治療領域的資深研究員與科學傳播者。你的任務是：\n"
+    "1. 從提供的醫學文獻中，篩選出最具臨床意義與研究價值的憂鬱症治療論文\n"
     "2. 對每篇論文進行繁體中文摘要、分類、PICO 分析\n"
     "3. 評估其臨床實用性（高/中/低）\n"
-    "4. 生成適合醫療專業人員閱讀的 TRD 日報\n\n"
+    "4. 生成適合醫療專業人員閱讀的憂鬱症治療文獻日報\n\n"
     "輸出格式要求：\n"
     "- 語言：繁體中文（台灣用語）\n"
     "- 專業但易懂\n"
@@ -84,13 +84,13 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict | None:
         papers_data.get("papers", []), ensure_ascii=False, indent=2
     )
 
-    prompt = f"""以下是 {date_str} 從 PubMed 抓取的最新難治型憂鬱症（TRD）相關文獻（共 {paper_count} 篇）。
+    prompt = f"""以下是 {date_str} 從 PubMed 抓取的最新憂鬱症治療相關文獻（共 {paper_count} 篇）。
 
 請進行以下分析，並以 JSON 格式回傳（不要用 markdown code block）：
 
 {{
   "date": "{date_str}",
-  "market_summary": "1-2句話總結今天 TRD 文獻的整體趨勢與亮點",
+  "market_summary": "1-2句話總結今天憂鬱症治療文獻的整體趨勢與亮點",
   "top_picks": [
     {{
       "rank": 1,
@@ -134,7 +134,7 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict | None:
 {papers_text}
 
 請篩選出最重要的 TOP 5-8 篇論文放入 top_picks（按重要性排序），其餘放入 all_papers。
-每篇 paper 的 tags 請從以下選擇：藥物治療、氯胺酮、電痙攣治療、rTMS、神經調節、心理治療、增效策略、生物標記、神經影像、自殺風險、復發預防、老年憂鬱、青少年憂鬱、共病症、精準醫療、機制研究、臨床試驗、真實世界數據、系統性回顧、藥物基因學、發炎指標、BDNF、麩胺酸系統、GABA系統、機器學習預測。
+每篇 paper 的 tags 請從以下選擇：藥物治療、氯胺酮、電痙攣治療、rTMS、神經調節、心理治療、增效策略、生物標記、神經影像、自殺風險、復發預防、老年憂鬱、青少年憂鬱、共病症、精準醫療、機制研究、臨床試驗、真實世界數據、系統性回顧、藥物基因學、發炎指標、BDNF、麩胺酸系統、GABA系統、機器學習預測、SSRI、SNRI、psychedelics、運動介入、睡眠治療、產後憂鬱、雙極性憂鬱、正念治療、行為活化、人際心理治療。
 記住：回傳純 JSON，不要用 ```json``` 包裹。"""
 
     headers = {
@@ -353,8 +353,8 @@ def generate_html(analysis: dict) -> str:
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Depression Brain &middot; TRD文獻日報 &middot; {date_display}</title>
-<meta name="description" content="{date_display} 難治型憂鬱症（TRD）文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<title>Depression Brain &middot; 憂鬱症治療文獻日報 &middot; {date_display}</title>
+<meta name="description" content="{date_display} 憂鬱症治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
 <style>
 :root{{--bg:#fdf6f0;--surface:#fffaf6;--line:#e0cfc4;--text:#2a1e14;--muted:#7a6555;--accent:#c0583a;--accent-soft:#f5ddd3;--card-bg:color-mix(in srgb,var(--surface) 92%,white)}}
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
@@ -425,7 +425,7 @@ footer a:hover{{color:var(--accent)}}
   <header>
     <div class="logo">\U0001f9e0</div>
     <div class="header-text">
-      <h1>Depression Brain &middot; TRD文獻日報</h1>
+      <h1>Depression Brain &middot; 憂鬱症治療文獻日報</h1>
       <div class="header-meta">
         <span class="badge badge-date">\U0001f4c5 {date_display}</span>
         <span class="badge badge-count">\U0001f4ca {total} 篇文獻</span>
@@ -434,7 +434,7 @@ footer a:hover{{color:var(--accent)}}
     </div>
   </header>
   <div class="summary-card">
-    <h2>\U0001f4cb 今日 TRD 文獻趨勢</h2>
+    <h2>\U0001f4cb 今日憂鬱症治療文獻趨勢</h2>
     <p class="summary-text">{summary}</p>
   </div>
   {sections}
@@ -464,7 +464,7 @@ footer a:hover{{color:var(--accent)}}
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate TRD daily report")
+    parser = argparse.ArgumentParser(description="Generate depression treatment daily report")
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument(
@@ -486,7 +486,7 @@ def main():
         tz = timezone(timedelta(hours=8))
         analysis = {
             "date": datetime.now(tz).strftime("%Y-%m-%d"),
-            "market_summary": "今日 PubMed 暫無新的 TRD 文獻更新。請明天再查看。",
+            "market_summary": "今日 PubMed 暫無新的憂鬱症治療文獻更新。請明天再查看。",
             "top_picks": [],
             "all_papers": [],
             "keywords": [],

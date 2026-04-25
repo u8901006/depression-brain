@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Fetch latest TRD (Treatment-Resistant Depression) research papers from PubMed.
-Keywords and journals based on trd_journals_pubmed_templates.md.
+Fetch latest depression treatment research papers from PubMed.
+Keywords and journals based on depression_journal_pubmed_toolkit.md.
 """
 
 import json
@@ -19,36 +19,78 @@ JOURNALS = [
     "American Journal of Psychiatry",
     "JAMA Psychiatry",
     "The Lancet Psychiatry",
-    "Biological Psychiatry",
+    "World Psychiatry",
     "Molecular Psychiatry",
-    "Neuropsychopharmacology",
-    "Psychological Medicine",
+    "Biological Psychiatry",
+    "Biological Psychiatry: Cognitive Neuroscience and Neuroimaging",
     "Journal of Affective Disorders",
     "Depression and Anxiety",
-    "Journal of Psychiatric Research",
-    "Progress in Neuro-Psychopharmacology and Biological Psychiatry",
-    "European Neuropsychopharmacology",
-    "Psychotherapy and Psychosomatics",
+    "Acta Psychiatrica Scandinavica",
+    "Psychological Medicine",
+    "British Journal of Psychiatry",
+    "BJPsych Open",
     "European Psychiatry",
-    "World Journal of Biological Psychiatry",
-    "Psychiatry Research",
-    "CNS Spectrums",
+    "European Neuropsychopharmacology",
+    "International Journal of Neuropsychopharmacology",
     "Journal of Clinical Psychiatry",
-    "Journal of Psychiatry and Neuroscience",
+    "CNS Spectrums",
+    "Neuropsychopharmacology",
+    "Journal of Psychopharmacology",
+    "Psychopharmacology",
+    "CNS Drugs",
+    "Pharmacopsychiatry",
+    "Journal of Clinical Psychopharmacology",
+    "Brain Stimulation",
+    "Journal of ECT",
+    "Neuromodulation",
+    "Translational Psychiatry",
+    "Brain Behavior and Immunity",
+    "Psychoneuroendocrinology",
+    "Journal of Psychiatric Research",
+    "Psychiatry Research",
+    "BMC Psychiatry",
+    "Frontiers in Psychiatry",
     "Clinical Psychology Review",
+    "Behaviour Research and Therapy",
+    "Psychotherapy Research",
+    "Lancet",
+    "JAMA",
+    "BMJ",
+    "New England Journal of Medicine",
+    "Social Psychiatry and Psychiatric Epidemiology",
+    "JAMA Psychiatry",
+    "Archives of Women's Mental Health",
+    "Journal of Adolescent Health",
 ]
 
-HEADERS = {"User-Agent": "TRDBrainBot/1.0 (research aggregator)"}
+HEADERS = {"User-Agent": "DepressionBrainBot/1.0 (research aggregator)"}
 
 
-def build_query(days: int = 7, max_journals: int = 12) -> str:
-    trd_core = (
-        '("treatment-resistant depression"[tiab] OR '
+def build_query(days: int = 7, max_journals: int = 20) -> str:
+    depression_core = (
+        '("Depressive Disorder"[Mesh] OR "Depression"[Mesh] OR '
+        '"major depressive disorder"[tiab] OR '
+        '"treatment-resistant depression"[tiab] OR '
         '"treatment resistant depression"[tiab] OR '
         "TRD[tiab] OR "
-        '"refractory depression"[tiab] OR '
-        '"difficult-to-treat depression"[tiab] OR '
-        '"drug-resistant depression"[tiab])'
+        '"depressive symptoms"[tiab] OR '
+        '"bipolar depression"[tiab])'
+    )
+    treatment_filter = (
+        ' AND (antidepressant*[tiab] OR psychotherapy[tiab] OR CBT[tiab] OR '
+        'ketamine[tiab] OR esketamine[tiab] OR rTMS[tiab] OR TMS[tiab] OR ECT[tiab] OR '
+        'tDCS[tiab] OR DBS[tiab] OR psilocybin[tiab] OR '
+        '"cognitive behavioral therapy"[tiab] OR '
+        '"behavioral activation"[tiab] OR '
+        '"interpersonal psychotherapy"[tiab] OR '
+        'mindfulness[tiab] OR '
+        'SSRI[tiab] OR SNRI[tiab] OR '
+        '"brain stimulation"[tiab] OR '
+        '"neuromodulation"[tiab] OR '
+        '"treatment response"[tiab] OR '
+        '"augmentation"[tiab] OR '
+        '"randomized"[tiab] OR '
+        '"clinical trial"[tiab])'
     )
     journal_part = " OR ".join(
         [f'"{j}"[Journal]' for j in JOURNALS[:max_journals]]
@@ -57,7 +99,7 @@ def build_query(days: int = 7, max_journals: int = 12) -> str:
         "%Y/%m/%d"
     )
     date_part = f'"{lookback}"[Date - Publication] : "3000"[Date - Publication]'
-    return f"{trd_core} AND ({journal_part}) AND {date_part}"
+    return f"{depression_core}{treatment_filter} AND ({journal_part}) AND {date_part}"
 
 
 def search_papers(query: str, retmax: int = 50) -> list[str]:
@@ -159,7 +201,7 @@ def fetch_details(pmids: list[str]) -> list[dict]:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Fetch TRD papers from PubMed")
+    parser = argparse.ArgumentParser(description="Fetch depression treatment papers from PubMed")
     parser.add_argument("--days", type=int, default=7)
     parser.add_argument("--max-papers", type=int, default=40)
     parser.add_argument("--output", default="-")
@@ -168,7 +210,7 @@ def main():
 
     query = build_query(days=args.days)
     print(
-        f"[INFO] Searching PubMed for TRD papers (last {args.days} days)...",
+        f"[INFO] Searching PubMed for depression treatment papers (last {args.days} days)...",
         file=sys.stderr,
     )
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Generate index.html listing all TRD daily reports."""
+"""Generate index.html listing all depression treatment daily reports."""
 
 import glob
 import os
 from datetime import datetime
 
-html_files = sorted(glob.glob("docs/trd-*.html"), reverse=True)
+html_files = sorted(glob.glob("docs/depression-*.html"), reverse=True)
 links = ""
 for f in html_files[:30]:
     name = os.path.basename(f)
-    date = name.replace("trd-", "").replace(".html", "")
+    date = name.replace("depression-", "").replace(".html", "")
     try:
         d = datetime.strptime(date, "%Y-%m-%d")
         date_display = d.strftime("%Y年%-m月%-d日")
@@ -31,7 +31,7 @@ index = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Depression Brain · TRD 文獻日報</title>
+<title>Depression Brain · 憂鬱症治療文獻日報</title>
 <style>
 :root{{--bg:#fdf6f0;--surface:#fffaf6;--line:#e0cfc4;--text:#2a1e14;--muted:#7a6555;--accent:#c0583a;--accent-soft:#f5ddd3}}
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
@@ -58,7 +58,7 @@ footer a:hover{{color:var(--accent)}}
 <div class="container">
   <div class="logo">🧠</div>
   <h1>Depression Brain</h1>
-  <p class="subtitle">難治型憂鬱症（TRD）文獻日報 · 每日自動更新</p>
+  <p class="subtitle">憂鬱症治療文獻日報 · 每日自動更新</p>
   <p class="count">共 {total} 期日報</p>
   <ul>{links}</ul>
   <div class="clinic-links">

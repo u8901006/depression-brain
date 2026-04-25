@@ -1,4 +1,4 @@
-name: TRD Daily Report
+name: Depression Treatment Daily Report
 
 on:
   schedule:
@@ -50,11 +50,11 @@ jobs:
           fi
           echo "Date: $(grep target "$GITHUB_OUTPUT" | cut -d= -f2)"
 
-      - name: Fetch TRD papers from PubMed
+      - name: Fetch depression treatment papers from PubMed
         run: |
           python scripts/fetch_papers.py \
             --days 7 \
-            --max-papers 40 \
+            --max-papers 60 \
             --json \
             --output papers.json
         continue-on-error: true
@@ -78,7 +78,7 @@ jobs:
         run: |
           python scripts/generate_report.py \
             --input papers.json \
-            --output docs/trd-${{ steps.date.outputs.target }}.html \
+            --output docs/depression-${{ steps.date.outputs.target }}.html \
             --api-key "$ZHIPU_API_KEY"
 
       - name: Generate index page
@@ -90,13 +90,13 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
           git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "trd daily report: ${{ steps.date.outputs.target }}"
+          git commit -m "depression treatment daily report: ${{ steps.date.outputs.target }}"
           git pull --rebase origin main
           git push
 
       - name: Summary
         run: |
-          echo "### TRD Daily Report" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Depression Treatment Daily Report" >> "$GITHUB_STEP_SUMMARY"
           echo "**Date:** ${{ steps.date.outputs.target }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Papers analyzed:** ${{ steps.papers.outputs.count }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Report:** [trd-${{ steps.date.outputs.target }}.html](https://u8901006.github.io/depression-brain/trd-${{ steps.date.outputs.target }}.html)" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Report:** [depression-${{ steps.date.outputs.target }}.html](https://u8901006.github.io/depression-brain/depression-${{ steps.date.outputs.target }}.html)" >> "$GITHUB_STEP_SUMMARY"
