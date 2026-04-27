@@ -80,8 +80,12 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict | None:
         "date", datetime.now(tz).strftime("%Y-%m-%d")
     )
     paper_count = papers_data.get("count", 0)
+    papers = papers_data.get("papers", [])
+    if len(papers) > 25:
+        papers = papers[:25]
+        paper_count = len(papers)
     papers_text = json.dumps(
-        papers_data.get("papers", []), ensure_ascii=False, indent=2
+        papers, ensure_ascii=False, indent=2
     )
 
     prompt = f"""以下是 {date_str} 從 PubMed 抓取的最新憂鬱症治療相關文獻（共 {paper_count} 篇）。
@@ -151,7 +155,7 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict | None:
             ],
             "temperature": 0.3,
             "top_p": 0.9,
-            "max_tokens": 100000,
+            "max_tokens": 16384,
         }
         for attempt in range(3):
             try:
@@ -163,7 +167,7 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict | None:
                     f"{API_BASE}/chat/completions",
                     headers=headers,
                     json=payload,
-                    timeout=660,
+                    timeout=480,
                 )
                 if resp.status_code == 429:
                     wait = 60 * (attempt + 1)

@@ -16,7 +16,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Checkout
@@ -92,7 +92,7 @@ jobs:
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "depression treatment daily report: ${{ steps.date.outputs.target }}"
           git pull --rebase origin main
-          git push
+          git push origin main
 
       - name: Summary
         run: |
