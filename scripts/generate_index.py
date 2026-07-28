@@ -74,7 +74,7 @@ footer a:hover{{color:var(--accent)}}
     </a>
   </div>
   <footer>
-    <p>Powered by PubMed + Zhipu AI GLM-5-Turbo · <a href="https://github.com/u8901006/depression-brain">GitHub</a></p>
+    <p>Powered by PubMed + NVIDIA NIM Nemotron 3 · <a href="https://github.com/u8901006/depression-brain">GitHub</a></p>
   </footer>
 </div>
 </body>

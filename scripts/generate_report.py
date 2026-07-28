@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Generate depression treatment daily report HTML using Zhipu AI.
-Model fallback: GLM-5-Turbo -> GLM-4.7 -> GLM-4.7-Flash
-100000 max_tokens, 660s timeout, enhanced JSON fault tolerance.
+Generate depression treatment daily report HTML using NVIDIA NIM.
+Model fallback: nvidia/nemotron-3-super-120b-a12b -> nvidia/nemotron-3-nano-30b-a3b
+16384 max_tokens, 660s timeout, enhanced JSON fault tolerance.
 """
 
 import json
@@ -16,9 +16,9 @@ from datetime import datetime, timezone, timedelta
 import httpx
 
 API_BASE = os.environ.get(
-    "ZHIPU_API_BASE", "https://open.bigmodel.cn/api/coding/paas/v4"
+    "NVIDIA_API_BASE", "https://integrate.api.nvidia.com/v1"
 )
-MODEL_CHAIN = ["glm-5-turbo", "glm-4.7", "glm-4.7-flash"]
+MODEL_CHAIN = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"]
 
 SYSTEM_PROMPT = (
     "你是憂鬱症治療領域的資深研究員與科學傳播者。你的任務是：\n"
@@ -153,8 +153,10 @@ def analyze_papers(api_key: str, papers_data: dict) -> dict | None:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt},
             ],
-            "temperature": 0.3,
-            "top_p": 0.9,
+            "temperature": 1.0,
+            "top_p": 0.95,
+            "stream": False,
+            "chat_template_kwargs": {"enable_thinking": False},
             "max_tokens": 16384,
         }
         for attempt in range(3):
@@ -273,7 +275,7 @@ def generate_html(analysis: dict) -> str:
             '<div class="news-card featured">'
             '<div class="card-header">'
             f'<span class="rank-badge">#{p.get("rank","")}</span>'
-            f'<span class="emoji-icon">{p.get("emoji","\U0001f9e0")}</span>'
+            f'<span class="emoji-icon">{p.get("emoji","🧠")}</span>'
             f'<span class="{uc}">{ut}</span>'
             "</div>"
             f"<h3>{p.get('title_zh', p.get('title_en',''))}</h3>"
@@ -293,7 +295,7 @@ def generate_html(analysis: dict) -> str:
         rest_html += (
             '<div class="news-card">'
             '<div class="card-header-row">'
-            f'<span class="emoji-sm">{p.get("emoji","\U0001f4c4")}</span>'
+            f'<span class="emoji-sm">{p.get("emoji","📄")}</span>'
             f'<span class="{uc} utility-sm">{ut}</span>'
             "</div>"
             f"<h3>{p.get('title_zh', p.get('title_en',''))}</h3>"
@@ -433,7 +435,7 @@ footer a:hover{{color:var(--accent)}}
       <div class="header-meta">
         <span class="badge badge-date">\U0001f4c5 {date_display}</span>
         <span class="badge badge-count">\U0001f4ca {total} 篇文獻</span>
-        <span class="badge badge-source">Powered by PubMed + Zhipu AI GLM-5-Turbo</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA NIM Nemotron 3</span>
       </div>
     </div>
   </header>
@@ -457,7 +459,7 @@ footer a:hover{{color:var(--accent)}}
     </div>
   </div>
   <footer>
-    <span>資料來源：PubMed &middot; 分析模型：GLM-5-Turbo</span>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
     <span><a href="https://github.com/u8901006/depression-brain">GitHub</a></span>
   </footer>
 </div>
@@ -473,13 +475,13 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument(
         "--api-key",
-        default=os.environ.get("ZHIPU_API_KEY", ""),
+        default=os.environ.get("NVIDIA_API_KEY", ""),
     )
     args = parser.parse_args()
 
     if not args.api_key:
         print(
-            "[ERROR] No API key. Set ZHIPU_API_KEY env or use --api-key",
+            "[ERROR] No API key. Set NVIDIA_API_KEY env or use --api-key",
             file=sys.stderr,
         )
         sys.exit(1)

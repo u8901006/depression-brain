@@ -1,11 +1,11 @@
 # Depression Brain
 
-憂鬱症治療文獻日報 - 每日自動從 PubMed 抓取最新憂鬱症治療相關文獻，由 Zhipu AI GLM-5-Turbo 分析整理，自動生成 HTML 報告並部署到 GitHub Pages。
+憂鬱症治療文獻日報 - 每日自動從 PubMed 抓取最新憂鬱症治療相關文獻，由 NVIDIA NIM Nemotron 3 分析整理，自動生成 HTML 報告並部署到 GitHub Pages。
 
 ## 架構
 
 - **PubMed API** - 抓取憂鬱症治療相關期刊的最新論文
-- **Zhipu AI GLM-5-Turbo** - 分析、摘要、分類論文（fallback: GLM-4.7 → GLM-4.7-Flash）
+- **NVIDIA NIM Nemotron 3** - 分析、摘要、分類論文（primary: nvidia/nemotron-3-super-120b-a12b；fallback: nvidia/nemotron-3-nano-30b-a3b）
 - **GitHub Actions** - 每日台北時間 18:00 自動執行
 - **GitHub Pages** - 部署靜態 HTML 報告
 
@@ -30,5 +30,5 @@
 ```bash
 pip install -r scripts/requirements.txt
 python scripts/fetch_papers.py --days 7 --max-papers 40 --json --output papers.json
-python scripts/generate_report.py --input papers.json --output docs/trd-test.html --api-key $ZHIPU_API_KEY
+python scripts/generate_report.py --input papers.json --output docs/trd-test.html --api-key $NVIDIA_API_KEY
 ```
