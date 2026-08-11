@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Depression Brain &middot; 憂鬱症治療文獻日報 &middot; 2026年8月11日</title>
+<meta name="description" content="2026年8月11日 憂鬱症治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+:root{--bg:#fdf6f0;--surface:#fffaf6;--line:#e0cfc4;--text:#2a1e14;--muted:#7a6555;--accent:#c0583a;--accent-soft:#f5ddd3;--card-bg:color-mix(in srgb,var(--surface) 92%,white)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(circle at top,#f7ebe3 0,var(--bg) 55%,#eeddcf 100%);color:var(--text);font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+.container{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:60px 32px 80px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:52px;animation:fadeDown .6s ease both}
+.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#e88a6a);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 4px 20px rgba(192,88,58,.25)}
+.header-text h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+.header-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;letter-spacing:.3px}
+.badge-date{background:var(--accent-soft);border:1px solid var(--line);color:var(--accent)}
+.badge-count{background:rgba(192,88,58,.06);border:1px solid var(--line);color:var(--muted)}
+.badge-source{background:transparent;color:var(--muted);font-size:11px;padding:0 4px}
+.summary-card{background:var(--card-bg);border:1px solid var(--line);border-radius:24px;padding:28px 32px;margin-bottom:32px;box-shadow:0 20px 60px rgba(42,30,20,.06);animation:fadeUp .5s ease .1s both}
+.summary-card h2{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:var(--accent);margin-bottom:16px}
+.summary-text{font-size:15px;line-height:1.8}
+.section{margin-bottom:36px;animation:fadeUp .5s ease both}
+.section-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.section-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--accent-soft)}
+.news-card{background:var(--card-bg);border:1px solid var(--line);border-radius:24px;padding:22px 26px;margin-bottom:12px;box-shadow:0 8px 30px rgba(42,30,20,.04);transition:transform .2s,box-shadow .2s}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(42,30,20,.08)}
+.news-card.featured{border-left:3px solid var(--accent)}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rank-badge{background:var(--accent);color:#fff;font-weight:700;font-size:12px;padding:2px 8px;border-radius:6px}
+.emoji-icon{font-size:18px}
+.card-header-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.emoji-sm{font-size:14px}
+.news-card h3{font-size:15px;font-weight:600;margin-bottom:8px;line-height:1.5}
+.journal-source{font-size:12px;color:var(--accent);margin-bottom:8px;opacity:.8}
+.news-card p{font-size:13.5px;line-height:1.75;color:var(--muted)}
+.card-footer{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{padding:2px 9px;background:var(--accent-soft);border-radius:999px;font-size:11px;color:var(--accent)}
+.news-card a{font-size:12px;color:var(--accent);text-decoration:none;opacity:.7;margin-left:auto}
+.news-card a:hover{opacity:1}
+.utility-high{color:#2d7d46;font-size:11px;font-weight:600;padding:2px 8px;background:rgba(45,125,70,.1);border-radius:4px}
+.utility-mid{color:#9f7a2e;font-size:11px;font-weight:600;padding:2px 8px;background:rgba(159,122,46,.1);border-radius:4px}
+.utility-low{color:var(--muted);font-size:11px;font-weight:600;padding:2px 8px;background:rgba(90,109,130,.08);border-radius:4px}
+.utility-sm{font-size:10px}
+.pico-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;padding:12px;background:rgba(255,253,249,.8);border-radius:14px;border:1px solid var(--line)}
+.pico-item{display:flex;gap:8px;align-items:baseline}
+.pico-label{font-size:10px;font-weight:700;color:#fff;background:var(--accent);padding:2px 6px;border-radius:4px;flex-shrink:0}
+.pico-text{font-size:12px;color:var(--muted);line-height:1.4}
+.keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.keyword{padding:5px 14px;background:var(--accent-soft);border:1px solid var(--line);border-radius:20px;font-size:12px;color:var(--accent);cursor:default;transition:background .2s}
+.keyword:hover{background:rgba(192,88,58,.18)}
+.topic-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.topic-name{font-size:13px;color:var(--muted);width:100px;flex-shrink:0;text-align:right}
+.topic-bar-bg{flex:1;height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.topic-bar{height:100%;background:linear-gradient(90deg,var(--accent),#e88a6a);border-radius:4px;transition:width .6s ease}
+.topic-count{font-size:12px;color:var(--accent);width:24px}
+.clinic-banner{margin-top:48px;animation:fadeUp .5s ease .3s both}
+.clinic-links{display:flex;flex-direction:column;gap:12px}
+.clinic-link{display:flex;align-items:center;gap:14px;padding:18px 24px;background:var(--card-bg);border:1px solid var(--line);border-radius:24px;text-decoration:none;color:var(--text);transition:all .2s;box-shadow:0 8px 30px rgba(42,30,20,.04)}
+.clinic-link:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 12px 40px rgba(42,30,20,.08)}
+.clinic-icon{font-size:28px;flex-shrink:0}
+.clinic-name{font-size:15px;font-weight:700;flex:1}
+.clinic-arrow{font-size:18px;color:var(--accent);font-weight:700}
+footer{margin-top:32px;padding-top:22px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;animation:fadeUp .5s ease .5s both}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.container{padding:36px 18px 60px}.summary-card,.news-card{padding:20px 18px}.pico-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:6px;text-align:center}.topic-name{width:70px;font-size:11px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>Depression Brain &middot; 憂鬱症治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年8月11日</span>
+        <span class="badge badge-count">📊 12 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA NIM Nemotron 3</span>
+      </div>
+    </div>
+  </header>
+  <div class="summary-card">
+    <h2>📋 今日憂鬱症治療文獻趨勢</h2>
+    <p class="summary-text">今日憂鬱症治療文獻聚焦於快速作用干預（如氯胺酮/艾斯氯胺酮）的機制與實證、治療抵抗憂鬱的個體差異預測、以及非藥物介入（如運動、光療、經顱刺激）的實用效益，顯示精準醫療與多模式整合治療成為主流趨勢。</p>
+  </div>
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#1</span><span class="emoji-icon">💡</span><span class="utility-high">高實用性</span></div><h3>氯胺酮助聚焦心理治療提升治療抵抗憂鬱的緣解率：皮下艾斯氯胺酮準隨機試驗初步結果</h3><p class="journal-source">Journal of affective disorders &middot; Preliminary non-randomized clinical trial of subcutaneous esketamine in treatment-resistant depression: Exploring adjunctive effects of ketamine-assisted psychotherapy.</p><p>在治療抵抗憂鬱患者中，艾斯氯胺酮結合結構化心理治療（KAP）顯著提升緣解率（78.3% vs 34.8%），顯示心理治療可增強快速作用藥物的短期療效，但無法延長耐受期間。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">46名治療抵抗憂鬱門診患者</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">皮下艾斯氯胺酮（0.5-1.0 mg/kg）加 ketamine-assisted psychotherapy (KAP)</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">單獨皮下艾斯氯胺酮治療</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">KAP組在第七、八次治療時MADRS分數顯著下降；治療結束時緣解率為78.3%，顯著高於單藥組的34.8%</span></div></div><div class="card-footer"><span class="tag">氯胺酮</span><span class="tag">心理治療</span><span class="tag">增效策略</span><span class="tag">治療抵抗憂鬱</span><span class="tag">臨床試驗</span><a href="https://pubmed.ncbi.nlm.nih.gov/42575192/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#2</span><span class="emoji-icon">⚡</span><span class="utility-high">高實用性</span></div><h3>靜脈注射氯胺酮快速減輕自殺住院患者的心理痛苦：六週安慰劑對照試驗的次要分析</h3><p class="journal-source">Journal of affective disorders &middot; Intravenous Ketamine reduces psychological pain in suicidal inpatients: A secondary analysis of a six-week randomized placebo-controlled trial.</p><p>單次靜脈注射氯胺酮可在給藥後40分鐘起始顯著降低自殺住院患者的心理痛苦，效應在96小時內持續，與抑鬱症狀變化無關，顯示其作為快速緩解自殺風險的潛力。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">156名自殺精神科住院患者（氯胺酮組n=73，安慰劑組n=83）</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">兩次靜脈注射氯胺酮（0.5 mg/kg），相隔24小時</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">生理食鹽水安慰劑</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">氯胺酮組在給藥後40分鐘至96小時內心理痛苦顯著低於安慰劑組（所有時間點p<0.001），此效應在調整抑鬱與絕望後仍具顯著性</span></div></div><div class="card-footer"><span class="tag">氯胺酮</span><span class="tag">自殺風險</span><span class="tag">心理痛苦</span><span class="tag">臨床試驗</span><span class="tag">神經調節</span><a href="https://pubmed.ncbi.nlm.nih.gov/42575195/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#3</span><span class="emoji-icon">🥕</span><span class="utility-high">高實用性</span></div><h3>高劑量維生素B6顯著減輕輕度至中度憂鬱症狀：雙盲隨機對照試驗</h3><p class="journal-source">Depression and anxiety &middot; High Dose Vitamin B6 Reduces Depression Symptoms.</p><p>在有輕度或更嚴重憂鬱症狀的成人中，每日補充100mg維生素B6（pyridoxine）一個月，顯著降低憂鬱症狀，效應大（partial η²=0.20），對焦慮與壓力無影響。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">58名被分類為有輕度或更嚴重憂鬱症狀的成人（自267名社區參與者中篩選）</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">每日口服100mg維生素B6 (pyridoxine)，持續1個月</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">安慰劑或維生素B12 (1000 µg)</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">維生素B6組在憂鬱症狀上較安慰劑/B12組有顯著降低（partial η²=0.20），焦慮與壓力變化不顯著</span></div></div><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">發炎指標</span><span class="tag">真實世界數據</span><span class="tag">補充療法</span><a href="https://pubmed.ncbi.nlm.nih.gov/42569537/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#4</span><span class="emoji-icon">🧠</span><span class="utility-mid">中實用性</span></div><h3>神經網絡效率預測電痙攣療法對憂鬱的療效：結構與功能連接組學研究</h3><p class="journal-source">Journal of affective disorders &middot; Connectome-based graph metrics predict electroconvulsive therapy response in adults with depression.</p><p>基線腦部結構網絡（尤其是NDI加權的全域效率）可預測接受ECT的憂鬱患者是否緣解，提示網絡整合狀態是療效的潛在生物標記。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">41名成年重度憂鬱發作患者（接受ECT）與24名健康對照</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">標準電痙攣療法（ECT）</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">健康對照組</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">基線NDI加權結構全域效率較低者更可能為ECT緣解者（罰斷迴歸顯著預測），而非緣解者顯示功能局部效率降低</span></div></div><div class="card-footer"><span class="tag">電痙攣治療</span><span class="tag">神經影像</span><span class="tag">機器學習預測</span><span class="tag">生物標記</span><span class="tag">神經調節</span><a href="https://pubmed.ncbi.nlm.nih.gov/42571792/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#5</span><span class="emoji-icon">🦻</span><span class="utility-high">高實用性</span></div><h3>經皮耳介迷走神經刺激緩解產後憂鬱前期症狀：雙盲隨機對照試驗</h3><p class="journal-source">Journal of affective disorders &middot; Effectiveness of transcutaneous auricular vagus nerve stimulation in alleviating postpartum blues following cesarean delivery: A randomized double-blind controlled trial.</p><p>產後5天進行5天經皮耳介迷走神經刺激（taVNS）顯著降低剖腹產產婦的產後憂鬱前期症狀，並減少1月後Edinburgh產後憂鬱篩檢陽性率（4% vs 26%），同時改善睡眠與降低疼痛。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">100名剖腹產產婦</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">主動經皮耳介迷走神經刺激（taVNS），每日一次，連續5天</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">陰性對照（模擬taVNS）</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">taVNS組在產後第5天情緒視覺類比 scale 增幅顯著較小（中位數差異4.13 cm），1月後EPDS≥13者僅4%，對照組為26%</span></div></div><div class="card-footer"><span class="tag">神經調節</span><span class="tag">產後憂鬱</span><span class="tag">睡眠治療</span><span class="tag">臨床試驗</span><a href="https://pubmed.ncbi.nlm.nih.gov/42462365/" target="_blank">閱讀原文 →</a></div></div></div><div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🌍</span><span class="utility-mid utility-sm">中實用性</span></div><h3>憂鬱症患者真實世界中被代表不足的雙極性憂鬱：指南隨機試驗的代表性缺口</h3><p class="journal-source">Journal of affective disorders</p><p>約43%的真實世界雙極性憂鬱門診患者不符合典型指南隨機試驗納入標準，而納入試驗者報告藥物治療後主觀改善的機會是未納入者的9.8倍，凸顯現行試驗設計之代表性不足。</p><div class="card-footer"><span class="tag">雙極性憂鬱</span><span class="tag">真實世界數據</span><span class="tag">系統性回顧</span><a href="https://pubmed.ncbi.nlm.nih.gov/42575197/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">📏</span><span class="utility-mid utility-sm">中實用性</span></div><h3>不同評估工具如何影響氯胺酮在治療抵抗憂鬱中的療效解讀：多維度測量的必要性</h3><p class="journal-source">Journal of affective disorders</p><p>氯胺酮療效依賴測量工具：MADRS顯示較大改善（54.2%減少），而BDI-II與CGI-S較弱相關，提示單一量表無法全面捕捉快速作用藥物的多維療效。</p><div class="card-footer"><span class="tag">氯胺酮</span><span class="tag">生物標記</span><span class="tag">機制研究</span><a href="https://pubmed.ncbi.nlm.nih.gov/42575191/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🕸️</span><span class="utility-mid utility-sm">中實用性</span></div><h3>焦慮與憂鬱症狀網絡分析識別四種臨床亞型：指向個人化心理治療</h3><p class="journal-source">Psychological medicine</p><p>透過網絡分析識別出四種症狀簇（情緒失調、擔憂、神經 végétative、過度警覺），其中情緒失調與神經 végétative簇預後較差，提示以症狀網絡而非診斷類別導向治療可能更有效。</p><div class="card-footer"><span class="tag">心理治療</span><span class="tag">機器學習預測</span><span class="tag">症狀簇</span><span class="tag">數位心理健康</span><a href="https://pubmed.ncbi.nlm.nih.gov/42572390/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🧪</span><span class="utility-low utility-sm">低實用性</span></div><h3>口服低劑量艾斯氯胺酮不增加治療抵抗憂鬱患者的血清BDNF：安慰劑對照試驗次要分析</h3><p class="journal-source">Journal of affective disorders</p><p>每日低劑量口服艾斯氯胺酮（90mg/日）六週未顯著增加血清BDNF水平，與安慰劑組無差異，提示其有限臨床癌效可能與未達突觸可塑性閾值有關。</p><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">BDNF</span><span class="tag">氯胺酮</span><span class="tag">臨床試驗</span><a href="https://pubmed.ncbi.nlm.nih.gov/42462931/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">💊</span><span class="utility-high utility-sm">高實用性</span></div><h3>精神病性憂鬱的組合藥物治療：系統性回顧與雙邊元分析確認抗憂鬱-抗精神病藥物優於單療法</h3><p class="journal-source">Journal of affective disorders</p><p>四項急性期隨機對照試驗顯示，抗憂鬱藥物與抗精神病藥物組合療法顯著提升臨床改善機會（RR 1.93），支持當前指南對精神病性憂鬱的併用藥物建議。</p><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">系統性回顧</span><span class="tag">精神病性憂鬱</span><a href="https://pubmed.ncbi.nlm.nih.gov/42448052/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🧠</span><span class="utility-mid utility-sm">中實用性</span></div><h3>心理介入對經期前綜合症的療效：系統性回顧與元分析顯著減輕情緒與身體症狀</h3><p class="journal-source">Journal of affective disorders</p><p>20項隨機對照試驗元分析顯示心理介入顯著減輕經前綜合症症狀（SMD=-1.57），特別是情緒憂鬱、焦慮與憤怒/易怒，提供安全非藥物選項。</p><div class="card-footer"><span class="tag">心理治療</span><span class="tag">系統性回顧</span><a href="https://pubmed.ncbi.nlm.nih.gov/42448050/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">⚖️</span><span class="utility-mid utility-sm">中實用性</span></div><h3>抗憂鬱藥物對胰島素抵抗的影響：系統性回顧顯示三環類可能加重代謝風險</h3><p class="journal-source">Journal of affective disorders</p><p>選擇性三環藥物（如氯imipramine）可能急性及長期降低胰島素敏感度，而SSRI無急性影響，顯示抗憂鬱藥物選擇需考慮代謝副作用，特別是對糖尿病共病患者。</p><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">共病症</span><span class="tag">系統性回顧</span><span class="tag">發炎指標</span><a href="https://pubmed.ncbi.nlm.nih.gov/42323987/" target="_blank">PubMed →</a></div></div></div><div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div><div class="topic-row"><span class="topic-name">藥物治療</span><div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div><span class="topic-count">5</span></div><div class="topic-row"><span class="topic-name">氯胺酮</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">心理治療</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">神經調節</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">生物標記</span><div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div><span class="topic-count">2</span></div><div class="topic-row"><span class="topic-name">真實世界數據</span><div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div><span class="topic-count">2</span></div><div class="topic-row"><span class="topic-name">系統性回顧</span><div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div><span class="topic-count">2</span></div><div class="topic-row"><span class="topic-name">治療抵抗憂鬱</span><div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div><span class="topic-count">2</span></div><div class="topic-row"><span class="topic-name">產後憂鬱</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div><div class="topic-row"><span class="topic-name">電痙攣治療</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div><div class="topic-row"><span class="topic-name">維生素B6</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div></div><div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">氯胺酮</span><span class="keyword">心理治療</span><span class="keyword">維生素B6</span><span class="keyword">電痙攣治療</span><span class="keyword">迷走神經刺激</span><span class="keyword">治療抵抗憂鬱</span><span class="keyword">產後憂鬱</span><span class="keyword">生物標記</span><span class="keyword">真實世界數據</span><span class="keyword">心理痛苦</span></div></div>
+  <div class="clinic-banner">
+    <div class="clinic-links">
+      <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">🏥</span>
+        <span class="clinic-name">李政洋身心診所首頁</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+      <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">📬</span>
+        <span class="clinic-name">訂閱電子報</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+    </div>
+  </div>
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/depression-brain">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
