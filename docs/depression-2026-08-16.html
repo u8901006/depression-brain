@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Depression Brain &middot; 憂鬱症治療文獻日報 &middot; 2026年8月16日</title>
+<meta name="description" content="2026年8月16日 憂鬱症治療文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+:root{--bg:#fdf6f0;--surface:#fffaf6;--line:#e0cfc4;--text:#2a1e14;--muted:#7a6555;--accent:#c0583a;--accent-soft:#f5ddd3;--card-bg:color-mix(in srgb,var(--surface) 92%,white)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(circle at top,#f7ebe3 0,var(--bg) 55%,#eeddcf 100%);color:var(--text);font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+.container{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:60px 32px 80px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:52px;animation:fadeDown .6s ease both}
+.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#e88a6a);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 4px 20px rgba(192,88,58,.25)}
+.header-text h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+.header-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;align-items:center}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;letter-spacing:.3px}
+.badge-date{background:var(--accent-soft);border:1px solid var(--line);color:var(--accent)}
+.badge-count{background:rgba(192,88,58,.06);border:1px solid var(--line);color:var(--muted)}
+.badge-source{background:transparent;color:var(--muted);font-size:11px;padding:0 4px}
+.summary-card{background:var(--card-bg);border:1px solid var(--line);border-radius:24px;padding:28px 32px;margin-bottom:32px;box-shadow:0 20px 60px rgba(42,30,20,.06);animation:fadeUp .5s ease .1s both}
+.summary-card h2{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:var(--accent);margin-bottom:16px}
+.summary-text{font-size:15px;line-height:1.8}
+.section{margin-bottom:36px;animation:fadeUp .5s ease both}
+.section-title{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.section-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--accent-soft)}
+.news-card{background:var(--card-bg);border:1px solid var(--line);border-radius:24px;padding:22px 26px;margin-bottom:12px;box-shadow:0 8px 30px rgba(42,30,20,.04);transition:transform .2s,box-shadow .2s}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(42,30,20,.08)}
+.news-card.featured{border-left:3px solid var(--accent)}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rank-badge{background:var(--accent);color:#fff;font-weight:700;font-size:12px;padding:2px 8px;border-radius:6px}
+.emoji-icon{font-size:18px}
+.card-header-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.emoji-sm{font-size:14px}
+.news-card h3{font-size:15px;font-weight:600;margin-bottom:8px;line-height:1.5}
+.journal-source{font-size:12px;color:var(--accent);margin-bottom:8px;opacity:.8}
+.news-card p{font-size:13.5px;line-height:1.75;color:var(--muted)}
+.card-footer{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{padding:2px 9px;background:var(--accent-soft);border-radius:999px;font-size:11px;color:var(--accent)}
+.news-card a{font-size:12px;color:var(--accent);text-decoration:none;opacity:.7;margin-left:auto}
+.news-card a:hover{opacity:1}
+.utility-high{color:#2d7d46;font-size:11px;font-weight:600;padding:2px 8px;background:rgba(45,125,70,.1);border-radius:4px}
+.utility-mid{color:#9f7a2e;font-size:11px;font-weight:600;padding:2px 8px;background:rgba(159,122,46,.1);border-radius:4px}
+.utility-low{color:var(--muted);font-size:11px;font-weight:600;padding:2px 8px;background:rgba(90,109,130,.08);border-radius:4px}
+.utility-sm{font-size:10px}
+.pico-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;padding:12px;background:rgba(255,253,249,.8);border-radius:14px;border:1px solid var(--line)}
+.pico-item{display:flex;gap:8px;align-items:baseline}
+.pico-label{font-size:10px;font-weight:700;color:#fff;background:var(--accent);padding:2px 6px;border-radius:4px;flex-shrink:0}
+.pico-text{font-size:12px;color:var(--muted);line-height:1.4}
+.keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.keyword{padding:5px 14px;background:var(--accent-soft);border:1px solid var(--line);border-radius:20px;font-size:12px;color:var(--accent);cursor:default;transition:background .2s}
+.keyword:hover{background:rgba(192,88,58,.18)}
+.topic-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.topic-name{font-size:13px;color:var(--muted);width:100px;flex-shrink:0;text-align:right}
+.topic-bar-bg{flex:1;height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.topic-bar{height:100%;background:linear-gradient(90deg,var(--accent),#e88a6a);border-radius:4px;transition:width .6s ease}
+.topic-count{font-size:12px;color:var(--accent);width:24px}
+.clinic-banner{margin-top:48px;animation:fadeUp .5s ease .3s both}
+.clinic-links{display:flex;flex-direction:column;gap:12px}
+.clinic-link{display:flex;align-items:center;gap:14px;padding:18px 24px;background:var(--card-bg);border:1px solid var(--line);border-radius:24px;text-decoration:none;color:var(--text);transition:all .2s;box-shadow:0 8px 30px rgba(42,30,20,.04)}
+.clinic-link:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 12px 40px rgba(42,30,20,.08)}
+.clinic-icon{font-size:28px;flex-shrink:0}
+.clinic-name{font-size:15px;font-weight:700;flex:1}
+.clinic-arrow{font-size:18px;color:var(--accent);font-weight:700}
+footer{margin-top:32px;padding-top:22px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;animation:fadeUp .5s ease .5s both}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.container{padding:36px 18px 60px}.summary-card,.news-card{padding:20px 18px}.pico-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:6px;text-align:center}.topic-name{width:70px;font-size:11px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🧠</div>
+    <div class="header-text">
+      <h1>Depression Brain &middot; 憂鬱症治療文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年8月16日</span>
+        <span class="badge badge-count">📊 10 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA NIM Nemotron 3</span>
+      </div>
+    </div>
+  </header>
+  <div class="summary-card">
+    <h2>📋 今日憂鬱症治療文獻趨勢</h2>
+    <p class="summary-text">今日憂鬱症治療文獻聚焦於治療抵抗性憂鬱症的認知軌跡、多巴胺調節對社會獎賞期待的影響、以及經顱直流電刺激與認知復原的結合療效，顯示神經調節與精準醫療整合為主要研究趨勢。</p>
+  </div>
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#1</span><span class="emoji-icon">🧠</span><span class="utility-high">高實用性</span></div><h3>治療抵抗性與非抵抗性憂鬱症認知功能軌跡之比較：多中心線性混合效應分析</h3><p class="journal-source">Journal of affective disorders &middot; Comparing trajectories of cognitive functioning in treatment-resistant and non-resistant depression: a multicentre linear mixed-effects analysis.</p><p>治療抵抗性憂鬱症患者在注意力/處理速度與言語記憶方面基線表現較差，且隨時間推移認知改善停滯，而非抵抗性組則顯著改善，凸顯認知功能為治療抵抗性的重要臨床標誌。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">320名被診斷為重度憂鬱症（MDD）的患者，其中118人為治療抵抗性憂鬱症（TRD），202人為非治療抵抗性憂鬱症（non-TRD）</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">真實世界環境下的常規臨床追蹤（無特定介入）</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">TRD vs non-TRD 群組</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">12週內注意力/處理速度、言語記憶、運動速度與言語流暢度之認知功能變化軌跡</span></div></div><div class="card-footer"><span class="tag">治療抵抗性</span><span class="tag">認知功能</span><span class="tag">神經影像</span><span class="tag">精準醫療</span><span class="tag">真實世界數據</span><a href="https://pubmed.ncbi.nlm.nih.gov/42603560/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#2</span><span class="emoji-icon">💊</span><span class="utility-mid">中實用性</span></div><h3>多巴胺調節對社會獎賞期待的神經影響：阿米 sulphide  versus 安慰劑</h3><p class="journal-source">Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology &middot; Dopaminergic modulation of social reward anticipation in depression: neural effects of amisulpride versus placebo.</p><p>單劑量阿米 sulphide (100mg) 增強了腹側被蓋區（VTA）對社會獎賞期待的激活，但未改善重度憂鬱症患者在右側殼核的核心獎賞缺陷，顯示多巴胺調節具有部分潛力但受限於固有神經病理。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">58名重度憂鬱症（MDD）患者與57名健康對照組</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">單劑量阿米 sulphide 100mg（經顱前D2/3自體受體阻斷劑）</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">安慰劑對照，MDD vs 健康對照</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">社會獎賞期待時腦區激活（VTA、殼核、前 cingulate、島葉、前額葉內側區），透過fMRI測量</span></div></div><div class="card-footer"><span class="tag">多巴胺系統</span><span class="tag">神經影像</span><span class="tag">機制研究</span><span class="tag">藥物治療</span><span class="tag">anhedonia</span><a href="https://pubmed.ncbi.nlm.nih.gov/42601468/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#3</span><span class="emoji-icon">⚡</span><span class="utility-high">高實用性</span></div><h3>theta-gamma 耦合對認知復原結合經顱直流電刺激療效的調節作用：老年高痴呆風險群之次要分析</h3><p class="journal-source">Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology &middot; The effect of theta-gamma coupling on response to cognitive remediation combined with transcranial direct current stimulation in older adults at high risk for dementia: a PACt-MD secondary analysis.</p><p>基線前額theta-gamma耦合（TGC）顯著調節認知復原結合tDCS的療效：高TGC組在全球認知、言語記憶與執行功能方面顯著受益，低TGC組則無改善，顯示TGC為預測此類神經調節療效的潛在生物標誌。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">260名平均年齡71.9歲、輕度認知障礙（MCI）或緩解型重度憂鬱症（rMDD）老年人</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">結合認知復原（CR）與經顱直流電刺激（tDCS）</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">高TGC組 vs 低TGC組（中位數分組）</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">2個月、逐年直到6年的全球認知、言語記憶與執行功能變化</span></div></div><div class="card-footer"><span class="tag">神經調節</span><span class="tag">認知復原</span><span class="tag">tDCS</span><span class="tag">生物標記</span><span class="tag">老年憂鬱</span><span class="tag">機器學習預測</span><a href="https://pubmed.ncbi.nlm.nih.gov/42595848/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#4</span><span class="emoji-icon">⚡</span><span class="utility-high">高實用性</span></div><h3>靜態腦網絡連接性預測電痙攣療法（ECT）在憂鬱症患者中的療效應答</h3><p class="journal-source">Journal of affective disorders &middot; Connectome-based graph metrics predict electroconvulsive therapy response in adults with depression.</p><p>基線結構網絡中神經纖維密度指數（NDI）加權的全局效率是ECT療解的顯著預測因子：未癒合者顯示功能整合減損但結構連接保存，而癒合者則功能組織較佳，支持將連接圖論指標作為ECT的預測性生物標誌。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">41名正接受ECT療程的重度憂鬱症成人患者與24名健康對照組</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">標準電痙攣療法（ECT）</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">ECT療解者（MADRS ≤10） vs 未癒合者</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ECT後5次與治療結束兩週後之臨床療解（MADRS ≤10）</span></div></div><div class="card-footer"><span class="tag">電痙攣治療</span><span class="tag">神經影像</span><span class="tag">生物標記</span><span class="tag">機器學習預測</span><span class="tag">精準醫療</span><a href="https://pubmed.ncbi.nlm.nih.gov/42571792/" target="_blank">閱讀原文 →</a></div></div><div class="news-card featured"><div class="card-header"><span class="rank-badge">#5</span><span class="emoji-icon">🔗</span><span class="utility-mid">中實用性</span></div><h3>靜態腦網絡連接性分離藥物與期待效應在憂鬱症中的神經通路</h3><p class="journal-source">Journal of affective disorders &middot; Pharmacologic and expectancy effects in depression: Associations with inter-network resting-state connectivity.</p><p>基線注意網（DAN）與顯著網（SN）連接性預測安慰劑反應；SN與默認模式網絡（DMN）連接性則呈雙重解離：高連接預測SSRI較好反應，低連接預測安慰劑較好反應，揭示藥物與心理期待治療效應的不同神經基礎。</p><div class="pico-grid"><div class="pico-item"><span class="pico-label">P</span><span class="pico-text">60名重度憂鬱症患者</span></div><div class="pico-item"><span class="pico-label">I</span><span class="pico-text">雙盲隨機分配至SSRI或安慰劑，連同治療信念評估</span></div><div class="pico-item"><span class="pico-label">C</span><span class="pico-text">SSRI vs 安慰劑；藥物反應 vs 期待效應（以治療信念為中介變項）</span></div><div class="pico-item"><span class="pico-label">O</span><span class="pico-text">8週後憂鬱症狀改善（藥物 vs 期待效應貢獻）</span></div></div><div class="card-footer"><span class="tag">神經影像</span><span class="tag">機制研究</span><span class="tag">SSRI</span><span class="tag">安慰劑效應</span><span class="tag">精準醫療</span><a href="https://pubmed.ncbi.nlm.nih.gov/42442664/" target="_blank">閱讀原文 →</a></div></div></div><div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🤰</span><span class="utility-high utility-sm">高實用性</span></div><h3>藥物治療妊娠期憂鬱症：優先考慮母體心理健康</h3><p class="journal-source">JAMA psychiatry</p><p>SSRI 是產期憂鬱症治療的核心藥物，現有證據顯示其在母體與胎兒安全方面風險低，治療未治療的憂鬱症風險遠大於藥物風險，強調應優先治療母體憂鬱以優化兩代健康。</p><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">SSRI</span><span class="tag">產後憂鬱</span><span class="tag">真實世界數據</span><a href="https://pubmed.ncbi.nlm.nih.gov/42584886/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🔗</span><span class="utility-mid utility-sm">中實用性</span></div><h3>靜態腦網絡連接性分離藥物與期待效應在憂鬱症中的神經通路</h3><p class="journal-source">Journal of affective disorders</p><p>基線注意網（DAN）與顯著網（SN）連接性預測安慰劑反應；SN與默認模式網絡（DMN）連接性則呈雙重解離：高連接預測SSRI較好反應，低連接預測安慰劑較好反應，揭示藥物與心理期待治療效應的不同神經基礎。</p><div class="card-footer"><span class="tag">神經影像</span><span class="tag">機制研究</span><span class="tag">SSRI</span><span class="tag">安慰劑效應</span><span class="tag">精準醫療</span><a href="https://pubmed.ncbi.nlm.nih.gov/42442664/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🤰</span><span class="utility-high utility-sm">高實用性</span></div><h3>藥物治療妊娠期憂鬱症：優先考慮母體心理健康</h3><p class="journal-source">JAMA psychiatry</p><p>SSRI 是產期憂鬱症治療的核心藥物，現有證據顯示其在母體與胎兒安全方面風險低，治療未治療的憂鬱症風險遠大於藥物風險，強調應優先治療母體憂鬱以優化兩代健康。</p><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">SSRI</span><span class="tag">產後憂鬱</span><span class="tag">真實世界數據</span><a href="https://pubmed.ncbi.nlm.nih.gov/42584886/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">💪</span><span class="utility-mid utility-sm">中實用性</span></div><h3>運動介入對類比性廣泛性焦慮症年輕女性憂鬱症狀之影響：抗阻訓練 versus 低強度對照</h3><p class="journal-source">Journal of affective disorders</p><p>八週中高強度抗阻訓練（RET）與低強度對照組皆顯著減少憂鬱症狀，雙組間差異未達顯著，但RET組內效應較大，顯示即使低強度運動亦具抗憂鬱潛力。</p><div class="card-footer"><span class="tag">運動介入</span><span class="tag">真實世界數據</span><a href="https://pubmed.ncbi.nlm.nih.gov/42435863/" target="_blank">PubMed →</a></div></div><div class="news-card"><div class="card-header-row"><span class="emoji-sm">🤰</span><span class="utility-high utility-sm">高實用性</span></div><h3>藥物治療妊娠期憂鬱症：優先考慮母體心理健康</h3><p class="journal-source">JAMA psychiatry</p><p>SSRI 是產期憂鬱症治療的核心藥物，現有證據顯示其在母體與胎兒安全方面風險低，治療未治療的憂鬱症風險遠大於藥物風險，強調應優先治療母體憂鬱以優化兩代健康。</p><div class="card-footer"><span class="tag">藥物治療</span><span class="tag">SSRI</span><span class="tag">產後憂鬱</span><span class="tag">真實世界數據</span><a href="https://pubmed.ncbi.nlm.nih.gov/42584886/" target="_blank">PubMed →</a></div></div></div><div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div><div class="topic-row"><span class="topic-name">藥物治療</span><div class="topic-bar-bg"><div class="topic-bar" style="width:80%"></div></div><span class="topic-count">4</span></div><div class="topic-row"><span class="topic-name">神經調節</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">神經影像</span><div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div><span class="topic-count">5</span></div><div class="topic-row"><span class="topic-name">生物標記</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">精準醫療</span><div class="topic-bar-bg"><div class="topic-bar" style="width:80%"></div></div><span class="topic-count">4</span></div><div class="topic-row"><span class="topic-name">治療抵抗性</span><div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div><span class="topic-count">2</span></div><div class="topic-row"><span class="topic-name">機制研究</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">真實世界數據</span><div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div><span class="topic-count">3</span></div><div class="topic-row"><span class="topic-name">電痙攣治療</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div><div class="topic-row"><span class="topic-name">認知復原</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div><div class="topic-row"><span class="topic-name">老年憂鬱</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div><div class="topic-row"><span class="topic-name">運動介入</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div><div class="topic-row"><span class="topic-name">產後憂鬱</span><div class="topic-bar-bg"><div class="topic-bar" style="width:20%"></div></div><span class="topic-count">1</span></div></div><div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">治療抵抗性</span><span class="keyword">認知功能</span><span class="keyword">多巴胺</span><span class="keyword">tDCS</span><span class="keyword">ECT</span><span class="keyword">靜態連接性</span><span class="keyword">SSRI</span><span class="keyword">藥物與期待效應</span></div></div>
+  <div class="clinic-banner">
+    <div class="clinic-links">
+      <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">🏥</span>
+        <span class="clinic-name">李政洋身心診所首頁</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+      <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+        <span class="clinic-icon">📬</span>
+        <span class="clinic-name">訂閱電子報</span>
+        <span class="clinic-arrow">→</span>
+      </a>
+    </div>
+  </div>
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/depression-brain">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
