@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate depression treatment daily report HTML using NVIDIA NIM.
-Model fallback: nvidia/nemotron-3-super-120b-a12b -> nvidia/nemotron-3-nano-30b-a3b
+Model fallback: nvidia/nemotron-3-ultra-550b-a55b -> nvidia/nemotron-3-ultra-550b-a55b
 16384 max_tokens, 660s timeout, enhanced JSON fault tolerance.
 """
 
@@ -18,7 +18,7 @@ import httpx
 API_BASE = os.environ.get(
     "NVIDIA_API_BASE", "https://integrate.api.nvidia.com/v1"
 )
-MODEL_CHAIN = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"]
+MODEL_CHAIN = ["nvidia/nemotron-3-ultra-550b-a55b"]
 
 SYSTEM_PROMPT = (
     "你是憂鬱症治療領域的資深研究員與科學傳播者。你的任務是：\n"
@@ -459,7 +459,7 @@ footer a:hover{{color:var(--accent)}}
     </div>
   </div>
   <footer>
-    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-ultra-550b-a55b</span>
     <span><a href="https://github.com/u8901006/depression-brain">GitHub</a></span>
   </footer>
 </div>
